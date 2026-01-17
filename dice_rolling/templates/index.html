@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            width: 320px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .scores {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        .dice {
+            font-size: 60px;
+            margin: 15px 0;
+        }
+        button {
+            padding: 12px 25px;
+            border: none;
+            background: #43cea2;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        a {
+            display: block;
+            margin-top: 12px;
+            text-decoration: none;
+            color: #185a9d;
+            font-weight: bold;
+        }
+        .winner {
+            font-size: 20px;
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🎲 Dice Rolling Game</h2>
+
+    <div class="scores">
+        <div>Player 1: {{ p1 }}</div>
+        <div>Player 2: {{ p2 }}</div>
+    </div>
+
+    <p>Turn: Player {{ turn }}</p>
+
+    <div class="dice">
+        {% if roll %}
+            {{ roll }}
+        {% else %}
+            🎲
+        {% endif %}
+    </div>
+
+    {% if winner %}
+        <div class="winner">🏆 {{ winner }} Wins!</div>
+    {% else %}
+        <button onclick="window.location.href='/roll'">Roll Dice</button>
+    {% endif %}
+
+    <a href="/reset">🔁 New Game</a>
+</div>
+
+</body>
+</html>
